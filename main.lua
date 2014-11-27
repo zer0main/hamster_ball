@@ -11,7 +11,7 @@ function love.load()
         enemy.y = enemy.height + 100
         table.insert(enemies, enemy)
     end
-    ball = love.graphics.newImage("Resource-HamsterBall.png")
+    ball = love.graphics.newImage("hamster_ball.png")
     x = 50
     y = 50
     speed = 300
