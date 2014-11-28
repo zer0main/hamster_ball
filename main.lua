@@ -1,3 +1,28 @@
+function keyIsDown(dt)
+    if love.keyboard.isDown("right") then
+        x = x + dt * speed
+    end
+    if love.keyboard.isDown("left") then
+        x = x - dt * speed
+    end
+    if love.keyboard.isDown("down") then
+        y = y + speed * dt
+    end
+    if love.keyboard.isDown("up") then
+        y = y - dt * speed
+    end
+    if love.keyboard.isDown(" ") then
+        if (dt1 - dt2) >= 0.2 then
+            local shot = {}
+            shot.x = x
+            shot.y = y
+            shot.pict = love.graphics.newImage("fireball.png")
+            table.insert(shots, shot)
+            dt2 = dt1
+        end
+    end
+ end
+
 function addEnemies(number, width, height, speed)
     for i = 0, number do
         enemy = {}
@@ -41,29 +66,8 @@ function love.update(dt)
             end
         end
     end
-    if love.keyboard.isDown("right") then
-        x = x + dt * speed
-    end
-    if love.keyboard.isDown("left") then
-        x = x - dt * speed
-    end
-    if love.keyboard.isDown("down") then
-        y = y + speed * dt
-    end
-    if love.keyboard.isDown("up") then
-        y = y - dt * speed
-    end
-    if love.keyboard.isDown(" ") then
-        if (dt1 - dt2) >= 0.2 then
-            local shot = {}
-            shot.x = x
-            shot.y = y
-            shot.pict = love.graphics.newImage("fireball.png")
-            table.insert(shots, shot)
-            dt2 = dt1
-        end
-    end
-end
+    keyIsDown(dt)
+ end
 
 function love.draw()
     love.graphics.setColor(255, 255, 255, 255)
