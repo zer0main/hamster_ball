@@ -33,7 +33,7 @@ function love.update(dt)
         v.y = v.y - dt * 500
         for x, d in ipairs(enemies) do
             d.y = d.y + d.speed * dt
-            if checkCollision(v.x, v.y, 0, 0, d.x, d.y, d.width, d.height) then
+            if checkCollision(v.x, v.y, 20, 20, d.x, d.y, d.width, d.height) then
                 table.remove(enemies, x)
             end
         end
