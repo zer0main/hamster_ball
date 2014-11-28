@@ -1,3 +1,10 @@
+function checkCollision(x1, y1, w1, h1, x2, y2, w2, h2)
+    return x1 < x2 + w2 and
+           x2 < x1 + w1 and
+           y1 < y2 + h2 and
+           y2 < y1 + h1
+end
+
 function love.load() 
     bg = love.graphics.newImage("bg.png")
     enemies = {}
@@ -26,7 +33,7 @@ function love.update(dt)
         v.y = v.y - dt * 500
         for x, d in ipairs(enemies) do
             d.y = d.y + d.speed * dt
-            if (math.abs((v.y - d.y)) < 7) and ((math.abs(v.x - d.x)) < 7) then
+            if checkCollision(v.x, v.y, 0, 0, d.x, d.y, d.width, d.height) then
                 table.remove(enemies, x)
             end
         end
