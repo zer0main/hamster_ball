@@ -1,3 +1,15 @@
+function addEnemies(number, width, height, speed)
+    for i = 0, number do
+        enemy = {}
+        enemy.width = width
+        enemy.height = height
+        enemy.speed = speed
+        enemy.x = i * (enemy.width + 60) + 100
+        enemy.y = enemy.height + 100
+        table.insert(enemies, enemy)
+    end
+end
+
 function checkCollision(x1, y1, w1, h1, x2, y2, w2, h2)
     return x1 < x2 + w2 and
            x2 < x1 + w1 and
@@ -8,16 +20,7 @@ end
 function love.load() 
     bg = love.graphics.newImage("bg.png")
     enemies = {}
-    for i = 0, 10 do
-        enemy = {}
-        enemy.width = 30
-        enemy.height = 15
-        enemy.speed = 10
-        enemy.x = 500
-        enemy.x = i * (enemy.width + 60) + 100
-        enemy.y = enemy.height + 100
-        table.insert(enemies, enemy)
-    end
+    addEnemies(10, 30, 15, 10)
     ball = love.graphics.newImage("hamster_ball.png")
     x = 50
     y = 50
