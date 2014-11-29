@@ -51,7 +51,7 @@ end
 function love.load() 
     bg = love.graphics.newImage("bg.png")
     enemies = {}
-    addEnemies(10, 30, 15, 10)
+    addEnemies(8, 30, 15, 10)
     ball = love.graphics.newImage("hamster_ball.png")
     x = 50
     y = 50
