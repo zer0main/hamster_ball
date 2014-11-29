@@ -27,7 +27,7 @@ function keyIsDown(dt)
             dt2 = dt1
         end
     end
- end
+end
 
 function addEnemies(number, width, height, speed)
     for i = 0, number do
