@@ -1,5 +1,9 @@
 local x, y, enemies, shots, speed, dt1, dt2, bg, ball
 
+local addEnemiesGroup = function(gr_number, diff)
+    addEnemies(8 - gr_number, 30, 15, 10 + gr_number * diff)
+end
+
 local tableLength = function(T)
     local count = 0
     for _ in pairs(T) do count = count + 1 end
