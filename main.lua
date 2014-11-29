@@ -1,10 +1,12 @@
-function tableLength(T)
+local x, y, enemies, shots, speed, dt1, dt2, bg, ball
+
+local tableLength = function(T)
     local count = 0
     for _ in pairs(T) do count = count + 1 end
     return count
 end
 
-function keyIsDown(dt)
+local keyIsDown = function(dt)
     if love.keyboard.isDown("right") then
         x = x + dt * speed
     end
@@ -29,9 +31,9 @@ function keyIsDown(dt)
     end
 end
 
-function addEnemies(number, width, height, speed)
+local addEnemies = function(number, width, height, speed)
     for i = 0, number do
-        enemy = {}
+        local enemy = {}
         enemy.width = width
         enemy.height = height
         enemy.speed = speed
@@ -41,7 +43,7 @@ function addEnemies(number, width, height, speed)
     end
 end
 
-function checkCollision(x1, y1, w1, h1, x2, y2, w2, h2)
+local checkCollision = function(x1, y1, w1, h1, x2, y2, w2, h2)
     return x1 < x2 + w2 and
            x2 < x1 + w1 and
            y1 < y2 + h2 and
