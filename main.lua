@@ -32,7 +32,7 @@ local keyIsDown = function(dt)
 end
 
 local addEnemies = function(number, width, height, speed)
-    for i = 0, number do
+    for i = 0, number - 1 do
         local enemy = {}
         enemy.width = width
         enemy.height = height
