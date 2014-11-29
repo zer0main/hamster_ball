@@ -1,3 +1,9 @@
+function tableLength(T)
+    local count = 0
+    for _ in pairs(T) do count = count + 1 end
+    return count
+end
+
 function keyIsDown(dt)
     if love.keyboard.isDown("right") then
         x = x + dt * speed
@@ -67,7 +73,7 @@ function love.update(dt)
         end
     end
     keyIsDown(dt)
- end
+end
 
 function love.draw()
     love.graphics.setColor(255, 255, 255, 255)
