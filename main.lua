@@ -1,4 +1,5 @@
 local x, y, enemies, shots, speed, dt1, dt2, bg, ball
+local group_number = 0
 
 local tableLength = function(T)
     local count = 0
@@ -43,8 +44,8 @@ local addEnemies = function(number, width, height, speed)
     end
 end
 
-local addEnemiesGroup = function(gr_number, diff)
-    addEnemies(8 - gr_number, 30, 15, 10 + gr_number * diff)
+local addEnemiesGroup = function(diff)
+    addEnemies(8 - group_number, 30, 15, 10 + group_number * diff)
 end
 
 local checkCollision = function(x1, y1, w1, h1, x2, y2, w2, h2)
@@ -69,9 +70,8 @@ end
 
 function love.update(dt)
     dt1 = dt1 + dt
-    local group_number = 1
     if tableLength(enemies) == 0 then
-        addEnemiesGroup(group_number, 1)
+        addEnemiesGroup(1)
         group_number = group_number + 1
         if group_number == 4 then
             love.event.quit()
