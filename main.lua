@@ -58,7 +58,7 @@ end
 function love.load() 
     bg = love.graphics.newImage("bg.png")
     enemies = {}
-    addEnemies(8, 30, 15, 10)
+    addEnemies(8, 30, 15, 20)
     ball = love.graphics.newImage("hamster_ball.png")
     x = 50
     y = 50
@@ -71,16 +71,18 @@ end
 function love.update(dt)
     dt1 = dt1 + dt
     if tableLength(enemies) == 0 then
-        addEnemiesGroup(1)
+        addEnemiesGroup(25)
         group_number = group_number + 1
-        if group_number == 4 then
+        if group_number == 7 then
             love.event.quit()
         end
+    end
+    for x, d in ipairs(enemies) do
+        d.y = d.y + d.speed * dt
     end
     for i, v in ipairs(shots) do
         v.y = v.y - dt * 500
         for x, d in ipairs(enemies) do
-            d.y = d.y + d.speed * dt
             if checkCollision(v.x, v.y, 20, 20, d.x, d.y, d.width, d.height) then
                 table.remove(enemies, x)
             end
