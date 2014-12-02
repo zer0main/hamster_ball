@@ -23,7 +23,7 @@ local keyIsDown = function(dt)
     if love.keyboard.isDown(" ") then
         if (dt1 - dt2) >= 0.2 then
             local shot = {}
-            shot.x = x
+            shot.x = x + 50
             shot.y = y
             shot.pict = love.graphics.newImage("fireball.png")
             table.insert(shots, shot)
