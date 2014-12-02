@@ -1,4 +1,5 @@
 local x, y, enemies, shots, speed, dt1, dt2, bg, ball
+local is_winner = false
 local group_number = 0
 
 local tableLength = function(T)
@@ -74,7 +75,7 @@ function love.update(dt)
         addEnemiesGroup(25)
         group_number = group_number + 1
         if group_number == 9 then
-            love.event.quit()
+            is_winner = true
         end
     end
     for x, d in ipairs(enemies) do
@@ -96,8 +97,12 @@ function love.draw()
     love.graphics.draw(bg)
     love.graphics.setColor(255, 255, 255, 255)
     love.graphics.draw(ball, x, y)
-    love.graphics.print("Level "  ..group_number,
-    300, 100, 0, 5, 5)
+    if is_winner then
+        love.graphics.print("You are winner!", 100, 300, 0, 7, 7)
+    else 
+        love.graphics.print("Level "  ..group_number,
+        300, 100, 0, 5, 5)
+    end
     for i, v in ipairs (shots) do
         love.graphics.draw(v.pict, v.x, v.y)
     end
