@@ -73,7 +73,7 @@ function love.update(dt)
     if tableLength(enemies) == 0 then
         addEnemiesGroup(25)
         group_number = group_number + 1
-        if group_number == 7 then
+        if group_number == 9 then
             love.event.quit()
         end
     end
@@ -96,6 +96,8 @@ function love.draw()
     love.graphics.draw(bg)
     love.graphics.setColor(255, 255, 255, 255)
     love.graphics.draw(ball, x, y)
+    love.graphics.print("Level "  ..group_number,
+    300, 100, 0, 5, 5)
     for i, v in ipairs (shots) do
         love.graphics.draw(v.pict, v.x, v.y)
     end
