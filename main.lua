@@ -82,7 +82,7 @@ function love.update(dt)
     dt1 = dt1 + dt
     checkFail()
     if tableLength(enemies) == 0 then
-        addEnemiesGroup(25)
+        addEnemiesGroup(40)
         group_number = group_number + 1
         if group_number == 9 then
             is_winner = true
