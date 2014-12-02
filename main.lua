@@ -1,11 +1,20 @@
 local x, y, enemies, shots, speed, dt1, dt2, bg, ball
 local is_winner = false
+local is_loser = false
 local group_number = 0
 
 local tableLength = function(T)
     local count = 0
     for _ in pairs(T) do count = count + 1 end
     return count
+end
+
+local checkFail = function()
+    if tableLength(enemies) ~= 0 then
+        if enemies[1].y > 700 then
+            is_loser = true
+        end
+    end
 end
 
 local keyIsDown = function(dt)
@@ -71,6 +80,7 @@ end
 
 function love.update(dt)
     dt1 = dt1 + dt
+    checkFail()
     if tableLength(enemies) == 0 then
         addEnemiesGroup(25)
         group_number = group_number + 1
@@ -97,7 +107,9 @@ function love.draw()
     love.graphics.draw(bg)
     love.graphics.setColor(255, 255, 255, 255)
     love.graphics.draw(ball, x, y)
-    if is_winner then
+    if is_loser then
+        love.graphics.print("You are loser...", 75, 300, 0, 7, 7)
+    elseif is_winner then
         love.graphics.print("You are winner!", 100, 300, 0, 7, 7)
     else 
         love.graphics.print("Level "  ..group_number,
