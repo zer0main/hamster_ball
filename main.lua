@@ -18,6 +18,9 @@ local checkFail = function()
 end
 
 local keyIsDown = function(dt)
+    if love.keyboard.isDown("escape") then
+        love.event.quit()
+    end
     if love.keyboard.isDown("right") then
         x = x + dt * speed
     end
