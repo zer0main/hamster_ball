@@ -69,6 +69,11 @@ local checkCollision = function(x1, y1, w1, h1, x2, y2, w2, h2)
 end
 
 function love.load() 
+    if love.window and love.window.setFullscreen then
+        love.windo.setFullscreen(true, "desctop")
+    elseif love.graphics.setMode then
+        love.graphics.setMode(800, 640, true, false, 0)
+    end
     bg = love.graphics.newImage("bg.png")
     enemies = {}
     addEnemies(8, 30, 15, 20)
