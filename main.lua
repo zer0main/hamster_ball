@@ -9,6 +9,14 @@ local tableLength = function(T)
     return count
 end
 
+local fullScreen = function()
+    if love.window and love.window.setFullscreen then
+        love.windo.setFullscreen(true, "desctop")
+    elseif love.graphics.setMode then
+        love.graphics.setMode(800, 640, true, false, 0)
+    end
+end 
+
 local checkFail = function()
     if tableLength(enemies) ~= 0 then
         if enemies[1].y > 700 then
@@ -18,6 +26,9 @@ local checkFail = function()
 end
 
 local keyIsDown = function(dt)
+    if love.keyboard.isDown("f") then
+        fullScreen()
+    end
     if love.keyboard.isDown("escape") then
         love.event.quit()
     end
@@ -69,11 +80,6 @@ local checkCollision = function(x1, y1, w1, h1, x2, y2, w2, h2)
 end
 
 function love.load() 
-    if love.window and love.window.setFullscreen then
-        love.windo.setFullscreen(true, "desctop")
-    elseif love.graphics.setMode then
-        love.graphics.setMode(800, 640, true, false, 0)
-    end
     bg = love.graphics.newImage("bg.png")
     enemies = {}
     addEnemies(8, 30, 15, 20)
