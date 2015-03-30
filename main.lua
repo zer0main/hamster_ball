@@ -15,7 +15,7 @@ local fullScreen = function()
     elseif love.graphics.setMode then
         love.graphics.setMode(800, 640, true, false, 0)
     end
-end 
+end
 
 local checkFail = function()
     if tableLength(enemies) ~= 0 then
@@ -79,7 +79,7 @@ local checkCollision = function(x1, y1, w1, h1, x2, y2, w2, h2)
            y2 < y1 + h1
 end
 
-function love.load() 
+function love.load()
     bg = love.graphics.newImage("bg.png")
     enemies = {}
     addEnemies(8, 30, 15, 20)
@@ -125,7 +125,7 @@ function love.draw()
         love.graphics.print("You are loser...", 75, 300, 0, 7, 7)
     elseif is_winner then
         love.graphics.print("You are winner!", 100, 300, 0, 7, 7)
-    else 
+    else
         love.graphics.print("Level "  ..group_number,
         300, 100, 0, 5, 5)
     end
