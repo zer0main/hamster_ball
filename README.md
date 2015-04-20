@@ -1,7 +1,8 @@
 hamster_ball
 ============
 
-hamster shoots down enemies in flight
-(it's a simple video game written on love2d)
+It's a simple video game written on love2d. In this game
+you are a hamster which tries to shoot down his enemies
+in flight.
 
 You need to have lua and love2d library installed.
