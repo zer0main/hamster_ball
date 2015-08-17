@@ -1,7 +1,7 @@
 hamster_ball
 ============
 
-It's a simple video game written on love2d. In this game
+It's a simple video game written in love2d. In this game
 you are a hamster which tries to shoot down his enemies
 in flight.
 
