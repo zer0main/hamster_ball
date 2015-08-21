@@ -1,3 +1,8 @@
+-- hamster_ball, video game
+-- Copyright (C) 2014-2015 Pavel Dolgov
+--
+-- See the LICENSE file for terms of use.
+
 local x, y, enemies, shots, speed, dt1, dt2, bg, ball
 local is_winner = false
 local is_loser = false
