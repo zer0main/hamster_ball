@@ -61,12 +61,12 @@ local keyIsDown = function(dt)
     end
 end
 
-local addEnemies = function(number, width, height, speed)
+local addEnemies = function(number, width, height, speed_arg)
     for i = 0, number - 1 do
         local enemy = {}
         enemy.width = width
         enemy.height = height
-        enemy.speed = speed
+        enemy.speed = speed_arg
         enemy.x = i * (enemy.width + 60) + 100
         enemy.y = enemy.height + 100
         table.insert(enemies, enemy)
@@ -107,14 +107,14 @@ function love.update(dt)
             is_winner = true
         end
     end
-    for x, d in ipairs(enemies) do
+    for _, d in ipairs(enemies) do
         d.y = d.y + d.speed * dt
     end
-    for i, v in ipairs(shots) do
+    for _, v in ipairs(shots) do
         v.y = v.y - dt * 500
-        for x, d in ipairs(enemies) do
+        for i, d in ipairs(enemies) do
             if checkCollision(v.x, v.y, 20, 20, d.x, d.y, d.width, d.height) then
-                table.remove(enemies, x)
+                table.remove(enemies, i)
             end
         end
     end
@@ -134,11 +134,11 @@ function love.draw()
         love.graphics.print("Level "  ..group_number,
         300, 100, 0, 5, 5)
     end
-    for i, v in ipairs (shots) do
+    for _, v in ipairs (shots) do
         love.graphics.draw(v.pict, v.x, v.y)
     end
     love.graphics.setColor(0, 255, 255, 255)
-    for i, v in ipairs (enemies) do
+    for _, v in ipairs (enemies) do
         love.graphics.rectangle("fill", v.x, v.y, v.width, v.height)
     end
 end
